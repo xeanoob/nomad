@@ -1,0 +1,117 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
+
+const INFLUENCES = ["Frankie Knuckles", "Larry Heard", "Kerri Chandler", "Masters At Work", "Daft Punk", "Motor City Drum Ensemble"];
+
+export default function AboutPage() {
+    return (
+        <div className="relative w-full min-h-screen bg-black text-white pt-40 pb-32 px-6 md:px-24 overflow-x-hidden">
+            <NoiseOverlay />
+
+            {/* Global Glow */}
+            <div className="fixed top-1/2 left-0 -translate-y-1/2 w-[60vw] h-[60vw] bg-nomad-pink opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
+
+            <section className="relative w-full max-w-7xl mx-auto z-10">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="w-full"
+                >
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20 md:mb-40">
+                        <div className="flex flex-col gap-6">
+                            <h1 className="font-display font-black text-7xl md:text-[14vw] lg:text-[12vw] uppercase leading-[0.75] tracking-tighter">L&apos;Esprit<br />Nomad.</h1>
+                        </div>
+                        <div className="flex flex-col gap-2 font-mono text-[10px] md:text-sm uppercase tracking-[0.3em] opacity-30">
+                            <span>Orléans, FR — Résidence</span>
+                            <span>Exploration Texturale</span>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
+                        {/* Column Left: Main Story */}
+                        <div className="md:col-span-7 flex flex-col gap-16">
+                            <section className="flex flex-col gap-8">
+                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">01. La Vision</h2>
+                                <p className="font-sans font-light text-2xl md:text-4xl text-white/90 leading-snug">
+                                    NOMAD n&apos;est pas seulement une identité musicale, c&apos;est un voyage sensoriel conçu pour explorer les recoins les plus profonds de la House Music.
+                                </p>
+                                <p className="font-sans font-light text-lg md:text-xl text-white/60 leading-relaxed max-w-xl">
+                                    Nous fusionnons des rythmes organiques terrestres avec des textures synthétiques éthérées pour créer une atmosphère qui transcende le simple dancefloor. Chaque set est une narration, chaque track est une escale.
+                                </p>
+                            </section>
+
+                            <section className="flex flex-col gap-8">
+                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">02. La Philosophie</h2>
+                                <blockquote className="font-display italic text-4xl md:text-6xl text-white leading-tight border-l-2 border-nomad-pink pl-8 py-4">
+                                    &quot;Le son est un pont entre le connu et l&apos;ineffable.&quot;
+                                </blockquote>
+                            </section>
+                        </div>
+
+                        {/* Column Right: Details & Lists */}
+                        <div className="md:col-span-5 flex flex-col gap-12 md:pt-[20vh]">
+                            <section className="flex flex-col gap-8 p-10 bg-white/5 border border-white/5 rounded-sm relative overflow-hidden backdrop-blur-sm">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-nomad-pink opacity-[0.05] blur-[40px]" />
+                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">03. Curations & Influences</h2>
+                                <ul className="flex flex-col gap-5 font-sans text-base md:text-lg text-white/70">
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Classic Deep House</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Detroit Techno</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Rythmes Organiques</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Expérimentations Analogiques</li>
+                                </ul>
+                            </section>
+
+                            <section className="flex flex-col gap-6 px-4">
+                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">04. Booking</h2>
+                                <p className="font-sans text-sm text-white/40 leading-relaxed italic">
+                                    Disponible pour des performances immersives, festivals et événements curatés à travers le monde.
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* VISION TEXT SECTION */}
+                <div className="w-full py-40 md:py-64 border-t border-white/5 mt-40">
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-5xl"
+                    >
+                        <h2 className="font-display font-black text-6xl md:text-9xl uppercase tracking-tighter mb-16 opacity-10">Inconscient.</h2>
+                        <p className="font-sans font-light text-2xl md:text-5xl leading-[1.05] text-white/80 mb-16">
+                            &quot;Le dancefloor n&apos;est pas une destination finale, c&apos;est un véhicule pour explorer l&apos;inconnu qui réside en nous.&quot;
+                        </p>
+                        <div className="w-24 h-[1px] bg-nomad-pink mb-16" />
+                        <p className="font-sans font-light text-lg md:text-2xl leading-relaxed text-white/50 max-w-3xl">
+                            Dans un paysage saturé de sons standardisés, NOMAD cherche la faille, l&apos;imprévisible. Ce moment précis où la musique ne se contente plus d&apos;être entendue, mais devient une onde physique qui redefine l&apos;espace.
+                        </p>
+                    </motion.div>
+                </div>
+
+                {/* INFLUENCES */}
+                <div className="w-full border-t border-white/10 pt-24">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-30 mb-12 block">Sourcing the Soul</span>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {INFLUENCES.map((inf, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                className="group py-6 border-b border-white/5 flex justify-between items-center hover:border-nomad-pink transition-colors"
+                            >
+                                <span className="font-display font-medium text-2xl uppercase tracking-tight">{inf}</span>
+                                <span className="font-mono text-[8px] opacity-0 group-hover:opacity-30 transition-opacity">INFLUENCE</span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}
