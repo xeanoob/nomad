@@ -83,7 +83,7 @@ export default function Home() {
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden z-10 px-6">
 
         {/* The Title is the anchor - perfectly centered */}
-        <div className="relative flex flex-col items-center justify-center pt-24 md:pt-32">
+        <div className="relative flex flex-col items-center justify-center pt-4 md:pt-32">
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}

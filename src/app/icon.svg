@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <!-- Organic, Hand-drawn Mountain Peak -->
+  <path d="M110 230 C 130 228, 150 220, 185 200 C 220 180, 260 140, 290 150 C 310 155, 330 185, 360 228" 
+        stroke="currentColor" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- "Stony" dots/clods to the left -->
+  <path d="M75 235 C 85 230, 95 230, 105 235" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round" />
+  <circle cx="60" cy="232" r="7" fill="currentColor" />
+  
+  <!-- Hand-drawn Star/Sun with character -->
+  <g transform="translate(160, 115) rotate(-5)">
+    <circle cx="0" cy="0" r="14" fill="currentColor" />
+    <!-- Primary rays -->
+    <path d="M0 -18 L0 -38 M0 18 L0 38 M-18 0 L-38 0 M18 0 L38 0" 
+          stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+    <!-- Secondary diagonal rays -->
+    <path d="M12 -12 L28 -28 M-12 12 L-28 28 M-12 -12 L-28 -28 M12 12 L28 28" 
+          stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+    <!-- Subtle asymmetric rays for the "hand-drawn" feel -->
+    <path d="M6 -15 L10 -30 M15 -6 L30 -10 M-7 16 L-12 28" 
+          stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+  </g>
+</svg>
