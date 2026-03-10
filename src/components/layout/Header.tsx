@@ -28,7 +28,16 @@ export function Header() {
                             <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">À Propos</Link>
                             <Link href="/music" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Musique</Link>
                             <Link href="/galerie" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Galerie</Link>
-                            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all text-nomad-pink cursor-pointer">Contact</Link>
+                            <Link
+                                href="/booking"
+                                onClick={() => setIsMenuOpen(false)}
+                                className={`px-8 py-3 border-2 border-nomad-pink rounded-full transition-all cursor-pointer ${pathname === '/booking'
+                                    ? 'bg-nomad-pink text-black'
+                                    : 'text-nomad-pink hover:bg-nomad-pink hover:text-black'
+                                    }`}
+                            >
+                                Booking
+                            </Link>
                         </div>
                     </motion.div>
                 )}
@@ -51,11 +60,19 @@ export function Header() {
                 </div>
 
                 {/* Desktop Nav Right */}
-                <div className="hidden md:flex pointer-events-auto gap-6 text-xs font-mono tracking-widest uppercase">
+                <div className="hidden md:flex pointer-events-auto gap-8 items-center text-sm font-mono tracking-widest uppercase">
                     <Link href="/about" className="hover:text-nomad-pink transition-colors cursor-pointer">À Propos</Link>
                     <Link href="/music" className="hover:text-nomad-pink transition-colors cursor-pointer">Musique</Link>
                     <Link href="/galerie" className="hover:text-nomad-pink transition-colors cursor-pointer">Galerie</Link>
-                    <Link href="/contact" className="hover:text-nomad-pink transition-colors cursor-pointer">Contact</Link>
+                    <Link
+                        href="/booking"
+                        className={`ml-4 px-8 py-3 border-2 border-nomad-pink rounded-full transition-all duration-500 font-sans font-black tracking-tighter cursor-pointer ${pathname === '/booking'
+                            ? 'bg-nomad-pink text-black'
+                            : 'text-nomad-pink hover:bg-nomad-pink hover:text-black'
+                            }`}
+                    >
+                        Booking
+                    </Link>
                 </div>
 
                 {/* Mobile Hamburger Icon */}

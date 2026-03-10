@@ -3,21 +3,10 @@
 import { motion } from "framer-motion";
 import { Instagram, Mail, Music2 } from "lucide-react";
 import { useState } from "react";
+import { subscribeNewsletter } from "@/app/actions/contact";
 
 export function ContactSection() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus("loading");
-
-        // Simulate form submission
-        setTimeout(() => {
-            setStatus("success");
-            // Reset status after 5 seconds
-            setTimeout(() => setStatus("idle"), 5000);
-        }, 1500);
-    };
 
     return (
         <section id="contact" className="relative w-full bg-transparent py-32 px-4 sm:px-8 text-foreground">
@@ -63,7 +52,21 @@ export function ContactSection() {
                             </button>
                         </motion.div>
                     ) : (
-                        <form className="flex flex-col gap-8 text-left" onSubmit={handleSubmit}>
+                        <form
+                            className="flex flex-col gap-8 text-left"
+                            action={async (formData) => {
+                                setStatus("loading");
+                                const email = formData.get("email") as string;
+                                const res = await subscribeNewsletter(email);
+                                if (res.success) {
+                                    setStatus("success");
+                                    setTimeout(() => setStatus("idle"), 5000);
+                                } else {
+                                    setStatus("idle");
+                                    alert("Une erreur est survenue.");
+                                }
+                            }}
+                        >
                             <div className="flex flex-col gap-2">
                                 <label htmlFor="email" className="text-sm font-medium tracking-wide text-white/50 uppercase">
                                     Email
@@ -78,6 +81,7 @@ export function ContactSection() {
                                         placeholder="votre-email@domaine.com"
                                     />
                                     <button
+                                        type="submit"
                                         disabled={status === "loading"}
                                         className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-white border border-transparent hover:border-white disabled:opacity-50 whitespace-nowrap cursor-pointer"
                                     >
@@ -91,7 +95,7 @@ export function ContactSection() {
 
                             <div className="pt-8 border-t border-white/5 flex flex-col gap-4 text-center">
                                 <p className="text-xs text-white/30 uppercase tracking-[0.2em]">Pour toute demande de booking</p>
-                                <a href="mailto:contactpro.nomadcrue@gmail.com" className="text-sm md:text-base font-mono text-white/60 hover:text-nomad-pink transition-colors cursor-pointer tracking-tight">contactpro.nomadcrue@gmail.com</a>
+                                <a href="/booking" className="text-sm md:text-base font-mono text-white/60 hover:text-nomad-pink transition-colors cursor-pointer tracking-tight underline">ACCÉDER AU BOOKING</a>
                             </div>
                         </form>
                     )}
@@ -110,7 +114,7 @@ export function ContactSection() {
                     <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
                         <Music2 size={28} />
                     </a>
-                    <a href="mailto:contactpro.nomadcrue@gmail.com" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
+                    <a href="mailto:contactpro.nomad@gmail.com" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
                         <Mail size={28} />
                     </a>
                 </motion.div>
