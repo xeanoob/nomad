@@ -115,13 +115,12 @@ export default function Home() {
             className="absolute top-full mt-12 flex flex-col items-center gap-4"
           >
             <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.6em] opacity-40">Orléans — Global</span>
-            <div className="w-[1px] h-16 bg-gradient-to-b from-white/20 to-transparent" />
           </motion.div>
         </div>
       </section>
 
       {/* NEW CONTENT: PHILOSOPHY/VISION */}
-      <section className="relative w-full py-24 md:py-48 px-6 md:px-24 bg-black z-10">
+      <section className="relative w-full py-24 md:py-48 px-6 md:px-24 z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
