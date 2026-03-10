@@ -41,7 +41,7 @@ export default function GaleriePage() {
     }, [selectedIndex, nextImage, prevImage]);
 
     return (
-        <div className="relative w-full min-h-screen bg-black text-white pt-32 pb-32 px-6 md:px-24 overflow-x-hidden">
+        <div className="relative w-full min-h-screen bg-black text-white pt-32 pb-32 px-6 sm:px-12 md:px-24 overflow-x-hidden">
             <NoiseOverlay />
 
             <motion.div

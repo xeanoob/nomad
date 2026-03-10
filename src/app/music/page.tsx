@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function MusicPage() {
     return (
-        <div className="relative w-full min-h-screen bg-black text-white pt-40 pb-40 px-6 md:px-24 overflow-x-hidden">
+        <div className="relative w-full min-h-screen bg-black text-white pt-32 pb-40 px-6 sm:px-12 md:px-24 overflow-x-hidden">
             <NoiseOverlay />
 
             {/* Subtle, gritty background highlight */}
@@ -29,7 +29,7 @@ export default function MusicPage() {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}
-                        className="font-display font-black text-8xl md:text-[15rem] uppercase leading-[0.75] tracking-tighter"
+                        className="font-display font-black text-7xl sm:text-8xl md:text-[15rem] uppercase leading-[0.75] tracking-tighter"
                     >
                         SONS.
                     </motion.h1>

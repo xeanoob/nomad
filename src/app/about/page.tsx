@@ -7,7 +7,7 @@ const INFLUENCES = ["Frankie Knuckles", "Larry Heard", "Kerri Chandler", "Master
 
 export default function AboutPage() {
     return (
-        <div className="relative w-full min-h-screen bg-black text-white pt-40 pb-32 px-6 md:px-24 overflow-x-hidden">
+        <div className="relative w-full min-h-screen bg-black text-white pt-32 pb-32 px-6 sm:px-12 md:px-24 overflow-x-hidden">
             <NoiseOverlay />
 
             {/* Global Glow */}
@@ -21,7 +21,7 @@ export default function AboutPage() {
                 >
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20 md:mb-40">
                         <div className="flex flex-col gap-6">
-                            <h1 className="font-display font-black text-7xl md:text-[14vw] lg:text-[12vw] uppercase leading-[0.75] tracking-tighter">L&apos;Esprit<br />Nomad.</h1>
+                            <h1 className="font-display font-black text-6xl sm:text-7xl md:text-[14vw] lg:text-[12vw] uppercase leading-[0.75] tracking-tighter">L&apos;Esprit<br />Nomad.</h1>
                         </div>
                         <div className="flex flex-col gap-2 font-mono text-[10px] md:text-sm uppercase tracking-[0.3em] opacity-30">
                             <span>Orléans, FR — Résidence</span>
@@ -81,8 +81,8 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="max-w-5xl"
                     >
-                        <h2 className="font-display font-black text-6xl md:text-9xl uppercase tracking-tighter mb-16 opacity-10">Lâcher prise.</h2>
-                        <p className="font-sans font-light text-2xl md:text-5xl leading-[1.05] text-white/80 mb-16">
+                        <h2 className="font-display font-black text-5xl sm:text-6xl md:text-9xl uppercase tracking-tighter mb-10 md:mb-16 opacity-10">Lâcher prise.</h2>
+                        <p className="font-sans font-light text-xl sm:text-2xl md:text-5xl leading-[1.05] text-white/80 mb-12 md:mb-16">
                             &quot;Le but c&apos;est de s&apos;oublier le temps d&apos;une soirée. De créer un espace bienveillant où seule la musique compte.&quot;
                         </p>
                         <div className="w-24 h-[1px] bg-nomad-pink mb-16" />
