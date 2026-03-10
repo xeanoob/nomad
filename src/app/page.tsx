@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
@@ -112,12 +113,29 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3, duration: 1 }}
-            className="absolute top-full mt-12 flex flex-col items-center gap-4"
+            className="absolute top-full mt-12 flex flex-col items-center gap-5"
           >
-            <p className="font-sans font-light text-sm md:text-base text-white/50 text-center tracking-wide">
+            <p className="font-sans font-light text-sm md:text-base text-white/50 text-center tracking-wide mb-2">
               Collectif House Music & Événementiel
             </p>
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.6em] opacity-40 mt-2">Orléans — Global</span>
+            
+            {/* Call to Actions */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Link 
+                href="/music" 
+                className="px-8 py-3 bg-nomad-pink/10 border border-nomad-pink/50 text-white font-mono text-xs tracking-widest uppercase hover:bg-nomad-pink/20 transition-colors"
+              >
+                Écouter nos sets
+              </Link>
+              <a 
+                href="mailto:contactpro.nomad@gmail.com" 
+                className="px-8 py-3 border border-white/20 text-white font-mono text-xs tracking-widest uppercase hover:border-white/50 transition-colors"
+              >
+                Booking / Contact
+              </a>
+            </div>
+
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.6em] opacity-40 mt-4">Orléans — Global</span>
           </motion.div>
         </div>
       </section>
