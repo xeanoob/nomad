@@ -25,7 +25,7 @@ export default function AboutPage() {
                         </div>
                         <div className="flex flex-col gap-2 font-mono text-[10px] md:text-sm uppercase tracking-[0.3em] opacity-30">
                             <span>Orléans, FR — Résidence</span>
-                            <span>Exploration Texturale</span>
+                            <span>Collectif House</span>
                         </div>
                     </div>
 
@@ -33,19 +33,19 @@ export default function AboutPage() {
                         {/* Column Left: Main Story */}
                         <div className="md:col-span-7 flex flex-col gap-16">
                             <section className="flex flex-col gap-8">
-                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">01. La Vision</h2>
+                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">01. Le Collectif</h2>
                                 <p className="font-sans font-light text-2xl md:text-4xl text-white/90 leading-snug">
-                                    NOMAD n&apos;est pas seulement une identité musicale, c&apos;est un voyage sensoriel conçu pour explorer les recoins les plus profonds de la House Music.
+                                    NOMAD, c&apos;est avant tout une histoire de potes passionnés par la House Music. Un projet né d&apos;une envie simple : se retrouver et vibrer ensemble.
                                 </p>
                                 <p className="font-sans font-light text-lg md:text-xl text-white/60 leading-relaxed max-w-xl">
-                                    Nous fusionnons des rythmes organiques terrestres avec des textures synthétiques éthérées pour créer une atmosphère qui transcende le simple dancefloor. Chaque set est une narration, chaque track est une escale.
+                                    On organise des événements pensés pour le dancefloor, avec une sélection toujours pointue et une vraie volonté de créer de bonnes ondes. Pas de chichis, juste de la bonne musique et une énergie communicative.
                                 </p>
                             </section>
 
                             <section className="flex flex-col gap-8">
-                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">02. La Philosophie</h2>
+                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">02. Notre vision</h2>
                                 <blockquote className="font-display italic text-4xl md:text-6xl text-white leading-tight border-l-2 border-nomad-pink pl-8 py-4">
-                                    &quot;Le son est un pont entre le connu et l&apos;ineffable.&quot;
+                                    &quot;La House est un sentiment. On est là pour le partager.&quot;
                                 </blockquote>
                             </section>
                         </div>
@@ -54,19 +54,19 @@ export default function AboutPage() {
                         <div className="md:col-span-5 flex flex-col gap-12 md:pt-[20vh]">
                             <section className="flex flex-col gap-8 p-10 bg-white/5 border border-white/5 rounded-sm relative overflow-hidden backdrop-blur-sm">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-nomad-pink opacity-[0.05] blur-[40px]" />
-                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">03. Curations & Influences</h2>
+                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">03. Nos Influences</h2>
                                 <ul className="flex flex-col gap-5 font-sans text-base md:text-lg text-white/70">
                                     <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Classic Deep House</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Detroit Techno</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Rythmes Organiques</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Expérimentations Analogiques</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Minimal & Dub</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Groove Analogique</li>
+                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Chicago & Detroit</li>
                                 </ul>
                             </section>
 
                             <section className="flex flex-col gap-6 px-4">
                                 <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">04. Booking</h2>
                                 <p className="font-sans text-sm text-white/40 leading-relaxed italic">
-                                    Disponible pour des performances immersives, festivals et événements curatés à travers le monde.
+                                    Toujours chauds pour de nouvelles collaborations. Plateaux, soirées, ou événements : on est à votre écoute.
                                 </p>
                             </section>
                         </div>
@@ -81,20 +81,20 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="max-w-5xl"
                     >
-                        <h2 className="font-display font-black text-6xl md:text-9xl uppercase tracking-tighter mb-16 opacity-10">Inconscient.</h2>
+                        <h2 className="font-display font-black text-6xl md:text-9xl uppercase tracking-tighter mb-16 opacity-10">Lâcher prise.</h2>
                         <p className="font-sans font-light text-2xl md:text-5xl leading-[1.05] text-white/80 mb-16">
-                            &quot;Le dancefloor n&apos;est pas une destination finale, c&apos;est un véhicule pour explorer l&apos;inconnu qui réside en nous.&quot;
+                            &quot;Le but c&apos;est de s&apos;oublier le temps d&apos;une soirée. De créer un espace bienveillant où seule la musique compte.&quot;
                         </p>
                         <div className="w-24 h-[1px] bg-nomad-pink mb-16" />
                         <p className="font-sans font-light text-lg md:text-2xl leading-relaxed text-white/50 max-w-3xl">
-                            Dans un paysage saturé de sons standardisés, NOMAD cherche la faille, l&apos;imprévisible. Ce moment précis où la musique ne se contente plus d&apos;être entendue, mais devient une onde physique qui redefine l&apos;espace.
+                            Notre idée de la fête est simple : ramener de la chaleur et de la proximité dans les soirées. Loin des line-ups froids et standardisés, NOMAD veut remettre le groove et l&apos;humain au centre du dancefloor.
                         </p>
                     </motion.div>
                 </div>
 
                 {/* INFLUENCES */}
                 <div className="w-full border-t border-white/10 pt-24">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-30 mb-12 block">Sourcing the Soul</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-30 mb-12 block">Inspirations</span>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {INFLUENCES.map((inf, i) => (
                             <motion.div

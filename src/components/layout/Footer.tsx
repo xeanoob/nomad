@@ -5,12 +5,12 @@ import Image from "next/image";
 
 export function Footer() {
     return (
-        <footer className="w-full bg-black border-t border-white/5 pt-24 pb-12 px-6 md:px-24 flex flex-col items-center">
+        <footer className="w-full bg-black border-t border-white/5 pt-12 md:pt-24 pb-12 px-6 md:px-24 flex flex-col items-center">
             <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
 
                 {/* Branding */}
-                <div className="flex flex-col gap-6">
-                    <div className="relative w-24 h-24 -ml-2">
+                <div className="flex flex-col gap-4 md:gap-6">
+                    <div className="relative w-20 h-20 md:w-24 md:h-24 -ml-2">
                         <Image
                             src="/nomad-removebg-preview.png"
                             alt="Nomad Logo"
@@ -45,7 +45,7 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto mt-24 pt-8 border-t border-white/5 flex justify-center text-[10px] font-mono uppercase tracking-[0.2em] opacity-30">
+            <div className="w-full max-w-7xl mx-auto mt-12 md:mt-24 pt-8 border-t border-white/5 flex justify-center text-[10px] font-mono uppercase tracking-[0.2em] opacity-30">
                 <span>© 2026 NOMAD MUSIC</span>
             </div>
         </footer>
