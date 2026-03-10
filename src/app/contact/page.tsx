@@ -18,10 +18,10 @@ export default function ContactPage() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center mb-16"
+                    className="text-center mb-12"
                 >
-                    <h1 className="font-display font-black text-6xl md:text-8xl uppercase tracking-tighter mb-4">Contact.</h1>
-                    <p className="font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] opacity-40">Laisse un message pour entrer dans l&apos;orbite</p>
+                    <h1 className="font-display font-black text-5xl md:text-7xl uppercase tracking-tighter mb-4">Contact.</h1>
+                    <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40">Laisse un message pour entrer dans l&apos;orbite</p>
                 </motion.div>
 
                 <motion.form
@@ -79,15 +79,18 @@ export default function ContactPage() {
                     </button>
                 </motion.form>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mt-32 border-t border-white/10 pt-16 w-full">
-                    <div className="flex flex-col gap-4 overflow-hidden">
-                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Management / Direct</span>
-                        <a href="mailto:contactpro.nomad@gmail.com" className="text-xl sm:text-2xl md:text-3xl font-display hover:text-nomad-pink transition-colors break-all md:break-normal">contactpro.nomad@gmail.com</a>
+                <div className="flex flex-col gap-10 mt-24 border-t border-white/10 pt-12 w-full text-left">
+                    <div className="flex flex-col gap-3">
+                        <span className="font-mono text-[9px] uppercase tracking-widest opacity-30 px-1">Management / Direct</span>
+                        <a href="mailto:contactpro.nomadcrue@gmail.com" className="text-lg sm:text-xl md:text-2xl font-display font-black uppercase tracking-tighter hover:text-nomad-pink transition-colors break-all">
+                            contactpro.nomadcrue@gmail.com
+                        </a>
                     </div>
-                    <div className="flex flex-col gap-4">
-                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Follow the Journey</span>
-                        <div className="flex gap-8 text-xl sm:text-2xl md:text-3xl font-display">
-                            <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="hover:text-nomad-pink transition-colors">Instagram</a>
+                    <div className="flex flex-col gap-3">
+                        <span className="font-mono text-[9px] uppercase tracking-widest opacity-30 px-1">Follow the Journey</span>
+                        <div className="flex flex-wrap gap-6">
+                            <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl md:text-2xl font-display font-black uppercase tracking-tighter hover:text-nomad-pink transition-colors">Instagram</a>
+                            <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-lg sm:text-xl md:text-2xl font-display font-black uppercase tracking-tighter hover:text-nomad-pink transition-colors">Soundcloud</a>
                         </div>
                     </div>
                 </div>

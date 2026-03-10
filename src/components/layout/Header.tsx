@@ -25,10 +25,10 @@ export function Header() {
                         className="fixed inset-0 z-[90] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center md:hidden"
                     >
                         <div className="flex flex-col gap-10 md:gap-12 text-center font-display font-black text-4xl sm:text-5xl uppercase tracking-tighter">
-                            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all">À Propos</Link>
-                            <Link href="/music" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all">Musique</Link>
-                            <Link href="/galerie" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all">Galerie</Link>
-                            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all text-nomad-pink">Contact</Link>
+                            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">À Propos</Link>
+                            <Link href="/music" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Musique</Link>
+                            <Link href="/galerie" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Galerie</Link>
+                            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all text-nomad-pink cursor-pointer">Contact</Link>
                         </div>
                     </motion.div>
                 )}
@@ -52,16 +52,17 @@ export function Header() {
 
                 {/* Desktop Nav Right */}
                 <div className="hidden md:flex pointer-events-auto gap-6 text-xs font-mono tracking-widest uppercase">
-                    <Link href="/about" className="hover:text-nomad-pink transition-colors">À Propos</Link>
-                    <Link href="/music" className="hover:text-nomad-pink transition-colors">Musique</Link>
-                    <Link href="/galerie" className="hover:text-nomad-pink transition-colors">Galerie</Link>
-                    <Link href="/contact" className="hover:text-nomad-pink transition-colors">Contact</Link>
+                    <Link href="/about" className="hover:text-nomad-pink transition-colors cursor-pointer">À Propos</Link>
+                    <Link href="/music" className="hover:text-nomad-pink transition-colors cursor-pointer">Musique</Link>
+                    <Link href="/galerie" className="hover:text-nomad-pink transition-colors cursor-pointer">Galerie</Link>
+                    <Link href="/contact" className="hover:text-nomad-pink transition-colors cursor-pointer">Contact</Link>
                 </div>
 
                 {/* Mobile Hamburger Icon */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden pointer-events-auto w-10 h-10 flex flex-col items-end justify-center gap-2 z-[95] mix-blend-difference"
+                    aria-label="Ouvrir le menu"
+                    className="md:hidden pointer-events-auto w-10 h-10 flex flex-col items-end justify-center gap-2 z-[95] mix-blend-difference cursor-pointer"
                 >
                     <span className={`block w-8 h-[2px] bg-white transition-transform duration-300 ${isMenuOpen ? "rotate-45 translate-y-[10px]" : ""}`} />
                     <span className={`block w-6 h-[2px] bg-white transition-opacity duration-300 ${isMenuOpen ? "opacity-0" : ""}`} />

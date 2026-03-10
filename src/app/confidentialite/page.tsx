@@ -24,7 +24,7 @@ export default function PrivacyPage() {
                     </section>
                     <section>
                         <h2 className="font-mono text-xs uppercase tracking-[0.4em] text-nomad-pink mb-4">03. Contact</h2>
-                        <p>Pour toute question relative à la confidentialité, contactez contactpro.nomad@gmail.com.</p>
+                        <p>Pour toute question relative à la confidentialité, contactez contactpro.nomadcrue@gmail.com.</p>
                     </section>
                 </div>
             </motion.div>

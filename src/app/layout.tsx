@@ -1,14 +1,18 @@
-"use client";
-
 import { Inter, Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 const mono = Space_Grotesk({ subsets: ["latin"], variable: "--font-mono" });
+
+export const metadata: Metadata = {
+  title: "NOMAD — Collectif House Music",
+  description: "Collectif House Music & Événementiel basé à Orléans. Exploration des textures sonores et expériences immersives.",
+};
 
 export default function RootLayout({
   children,

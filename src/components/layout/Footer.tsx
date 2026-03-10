@@ -27,20 +27,25 @@ export function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-24 w-full md:w-auto">
                     <div className="flex flex-col gap-4">
                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Exploration</span>
-                        <Link href="/" className="font-sans text-sm hover:text-nomad-pink transition-colors">Accueil</Link>
-                        <Link href="/about" className="font-sans text-sm hover:text-nomad-pink transition-colors">À Propos</Link>
-                        <Link href="/music" className="font-sans text-sm hover:text-nomad-pink transition-colors">Musique</Link>
-                        <Link href="/galerie" className="font-sans text-sm hover:text-nomad-pink transition-colors">Galerie</Link>
+                        <Link href="/" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Accueil</Link>
+                        <Link href="/about" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">À Propos</Link>
+                        <Link href="/music" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Musique</Link>
+                        <Link href="/galerie" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Galerie</Link>
                     </div>
                     <div className="flex flex-col gap-4">
                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Social & Légal</span>
-                        <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors">Instagram</a>
-                        <Link href="/confidentialite" className="font-sans text-sm hover:text-nomad-pink transition-colors">Confidentialité</Link>
-                        <Link href="/cgu" className="font-sans text-sm hover:text-nomad-pink transition-colors">CGU</Link>
+                        <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Instagram</a>
+                        <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Soundcloud</a>
+                        <Link href="/confidentialite" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Confidentialité</Link>
+                        <Link href="/cgu" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">CGU</Link>
                     </div>
                     <div className="flex flex-col gap-4">
                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Contact</span>
-                        <a href="mailto:contactpro.nomad@gmail.com" className="font-sans text-sm hover:text-nomad-pink transition-colors break-all">contactpro.nomad@gmail.com</a>
+                        <a href="mailto:contactpro.nomadcrue@gmail.com" className="font-sans text-sm hover:text-nomad-pink transition-colors break-words cursor-pointer">contactpro.nomadcrue@gmail.com</a>
+                        <div className="flex flex-col gap-2 mt-2">
+                            <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Instagram</a>
+                            <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Soundcloud</a>
+                        </div>
                     </div>
                 </div>
             </div>

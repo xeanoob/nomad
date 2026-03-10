@@ -2,23 +2,38 @@
 
 import { motion } from "framer-motion";
 import { Instagram, Mail, Music2 } from "lucide-react";
+import { useState } from "react";
 
 export function ContactSection() {
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        // Simulate form submission
+        setTimeout(() => {
+            setStatus("success");
+            // Reset status after 5 seconds
+            setTimeout(() => setStatus("idle"), 5000);
+        }, 1500);
+    };
+
     return (
-        <section className="relative w-full bg-nomad-dark py-32 px-4 sm:px-8 text-foreground">
+        <section id="contact" className="relative w-full bg-transparent py-32 px-4 sm:px-8 text-foreground">
             <div className="mx-auto max-w-4xl text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
-                    className="mb-16"
+                    className="mb-12"
                 >
-                    <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl uppercase">
-                        Prenez le contrôle <br /> de la nuit
+                    <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl uppercase">
+                        Rejoindre la Crue
                     </h2>
-                    <p className="mt-6 text-lg text-white/60 font-light">
-                        Prêts à faire vibrer votre prochain événement ? Discutons de votre scène.
+                    <p className="mt-4 text-base text-white/60 font-light max-w-xl mx-auto">
+                        Inscrivez-vous pour être les premiers informés de nos événements secrets et de nos nouvelles sessions. Pas de spam, juste l&apos;essentiel.
                     </p>
                 </motion.div>
 
@@ -27,48 +42,59 @@ export function ContactSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-black/50 p-8 backdrop-blur-md"
+                    className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-black/50 p-8 md:p-12 backdrop-blur-md"
                 >
-                    <form className="flex flex-col gap-6 text-left" onSubmit={(e) => e.preventDefault()}>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="name" className="text-sm font-medium tracking-wide text-white/50 uppercase">
-                                Nom / Organisation
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                className="w-full border-b border-white/20 bg-transparent px-0 py-2 text-white placeholder-white/20 transition-colors focus:border-nomad-pink focus:outline-none"
-                                placeholder="Votre nom"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="email" className="text-sm font-medium tracking-wide text-white/50 uppercase">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                className="w-full border-b border-white/20 bg-transparent px-0 py-2 text-white placeholder-white/20 transition-colors focus:border-nomad-pink focus:outline-none"
-                                placeholder="hello@exemple.com"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="message" className="text-sm font-medium tracking-wide text-white/50 uppercase">
-                                Projet / Date
-                            </label>
-                            <textarea
-                                id="message"
-                                rows={3}
-                                className="w-full resize-none border-b border-white/20 bg-transparent px-0 py-2 text-white placeholder-white/20 transition-colors focus:border-nomad-pink focus:outline-none"
-                                placeholder="Parlez-nous de l'événement..."
-                            />
-                        </div>
+                    {status === "success" ? (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="py-12 flex flex-col items-center gap-4"
+                        >
+                            <div className="w-16 h-16 rounded-full bg-nomad-pink/20 flex items-center justify-center text-nomad-pink">
+                                <Mail size={32} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white uppercase">Bienvenue dans la Crue</h3>
+                            <p className="text-white/60 text-center">Votre email a été ajouté à notre liste de diffusion prioritaire.</p>
+                            <button
+                                onClick={() => setStatus("idle")}
+                                className="mt-4 text-xs font-mono uppercase tracking-widest text-white/40 hover:text-white transition-colors cursor-pointer"
+                            >
+                                Retour
+                            </button>
+                        </motion.div>
+                    ) : (
+                        <form className="flex flex-col gap-8 text-left" onSubmit={handleSubmit}>
+                            <div className="flex flex-col gap-2">
+                                <label htmlFor="email" className="text-sm font-medium tracking-wide text-white/50 uppercase">
+                                    Email
+                                </label>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                        className="flex-1 border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder-white/20 transition-colors focus:border-nomad-pink focus:outline-none text-lg selection:bg-nomad-pink/30"
+                                        placeholder="votre-email@domaine.com"
+                                    />
+                                    <button
+                                        disabled={status === "loading"}
+                                        className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-white border border-transparent hover:border-white disabled:opacity-50 whitespace-nowrap cursor-pointer"
+                                    >
+                                        <span className="relative z-10 transition-colors group-hover:text-white">
+                                            {status === "loading" ? "Envoi..." : "Rejoindre"}
+                                        </span>
+                                        <div className="absolute inset-0 z-0 h-full w-full translate-y-full bg-nomad-pink transition-transform duration-300 ease-out group-hover:translate-y-0" />
+                                    </button>
+                                </div>
+                            </div>
 
-                        <button className="group relative mt-4 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-white border border-transparent hover:border-white">
-                            <span className="relative z-10 transition-colors group-hover:text-white">Envoyer la demande</span>
-                            <div className="absolute inset-0 z-0 h-full w-full translate-y-full bg-nomad-pink transition-transform duration-300 ease-out group-hover:translate-y-0" />
-                        </button>
-                    </form>
+                            <div className="pt-8 border-t border-white/5 flex flex-col gap-4 text-center">
+                                <p className="text-xs text-white/30 uppercase tracking-[0.2em]">Pour toute demande de booking</p>
+                                <a href="mailto:contactpro.nomadcrue@gmail.com" className="text-sm md:text-base font-mono text-white/60 hover:text-nomad-pink transition-colors cursor-pointer tracking-tight">contactpro.nomadcrue@gmail.com</a>
+                            </div>
+                        </form>
+                    )}
                 </motion.div>
 
                 <motion.div
@@ -78,13 +104,13 @@ export function ContactSection() {
                     transition={{ duration: 1, delay: 0.6 }}
                     className="mt-20 flex justify-center gap-8"
                 >
-                    <a href="#" className="text-white/50 transition-colors hover:text-nomad-pink">
+                    <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
                         <Instagram size={28} />
                     </a>
-                    <a href="#" className="text-white/50 transition-colors hover:text-nomad-pink">
+                    <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
                         <Music2 size={28} />
                     </a>
-                    <a href="mailto:contact@nomaddjs.com" className="text-white/50 transition-colors hover:text-nomad-pink">
+                    <a href="mailto:contactpro.nomadcrue@gmail.com" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
                         <Mail size={28} />
                     </a>
                 </motion.div>
