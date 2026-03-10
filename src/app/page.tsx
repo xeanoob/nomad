@@ -114,7 +114,10 @@ export default function Home() {
             transition={{ delay: 3, duration: 1 }}
             className="absolute top-full mt-12 flex flex-col items-center gap-4"
           >
-            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.6em] opacity-40">Orléans — Global</span>
+            <p className="font-sans font-light text-sm md:text-base text-white/50 text-center tracking-wide">
+              Collectif House Music & Événementiel
+            </p>
+            <span className="font-mono text-[10px] md:text-xs uppercase tracking-[0.6em] opacity-40 mt-2">Orléans — Global</span>
           </motion.div>
         </div>
       </section>
