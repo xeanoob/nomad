@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,16 @@ import { usePathname } from "next/navigation";
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const isHome = pathname === "/";
 
@@ -35,7 +44,10 @@ export function Header() {
             </AnimatePresence>
 
             {/* Header Mobile First */}
-            <nav className="fixed top-0 left-0 w-full p-6 md:p-10 z-[95] flex justify-between items-start md:items-center mix-blend-difference pointer-events-none">
+            <nav className="fixed top-0 left-0 w-full p-6 md:p-10 z-[95] flex justify-between items-start md:items-center mix-blend-difference pointer-events-none transition-all duration-300">
+                {/* Background Delimitation for Mobile */}
+                <div className={`absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/10 transition-opacity duration-300 md:hidden ${isScrolled ? "opacity-100" : "opacity-0"}`} />
+
 
                 {/* Logo Top Left - Hidden on Home since it's above the title now */}
                 <div className={`pointer-events-auto relative w-16 h-16 md:w-24 md:h-24 -mt-2 md:-mt-4 -ml-1 md:-ml-2 transition-opacity duration-500 ${isHome ? "opacity-0 invisible" : "opacity-100"}`}>
