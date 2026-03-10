@@ -21,10 +21,10 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="fr" className={`${inter.variable} ${outfit.variable} ${mono.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${outfit.variable} ${mono.variable}`} suppressHydrationWarning>
       <body className="bg-black text-white antialiased selection:bg-nomad-pink/30 select-none">
+        <Header />
         <SmoothScrolling>
-          <Header />
           <main className="min-h-screen">
             {children}
           </main>

@@ -1,117 +1,111 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useTransform, MotionValue } from "framer-motion";
 import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
+import { StickyWrapper } from "@/components/layout/StickyWrapper";
 
 const INFLUENCES = ["Frankie Knuckles", "Larry Heard", "Kerri Chandler", "Masters At Work", "Daft Punk", "Motor City Drum Ensemble"];
 
 export default function AboutPage() {
     return (
-        <div className="relative w-full min-h-screen bg-black text-white pt-32 pb-32 px-6 sm:px-12 md:px-24 overflow-x-hidden">
+        <main className="relative w-full bg-black text-white selection:bg-nomad-pink/30">
             <NoiseOverlay />
 
-            {/* Global Glow */}
-            <div className="fixed top-1/2 left-0 -translate-y-1/2 w-[60vw] h-[60vw] bg-nomad-pink opacity-[0.04] blur-[120px] rounded-full pointer-events-none" />
+            {/* Global Ambient Glow */}
+            <div className="fixed top-0 left-0 w-full h-full pointer-events-none select-none z-0">
+                <div className="absolute top-[20%] left-[-10%] w-[100vw] h-[100vw] bg-nomad-pink/[0.03] blur-[150px] rounded-full animate-ambient-pulse" />
+            </div>
 
-            <section className="relative w-full max-w-7xl mx-auto z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="w-full"
-                >
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20 md:mb-40">
-                        <div className="flex flex-col gap-6">
-                            <h1 className="font-display font-black text-6xl sm:text-7xl md:text-[14vw] lg:text-[12vw] uppercase leading-[0.75] tracking-tighter">L&apos;Esprit<br />Nomad.</h1>
+            {/* STICKY HERO */}
+            <StickyWrapper height="120vh" className="z-10 bg-black">
+                {(progress: MotionValue<number>) => {
+                    const opacity = useTransform(progress, [0, 0.8, 1], [1, 1, 0]);
+                    const scale = useTransform(progress, [0, 1], [1, 0.92]);
+
+                    return (
+                        <motion.div style={{ opacity, scale }} className="relative w-full h-full flex flex-col justify-center px-6 sm:px-12 md:px-24">
+                            <div className="max-w-7xl mx-auto w-full">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                    className="flex flex-col gap-6"
+                                >
+                                    <h1 className="font-display font-black text-[18vw] sm:text-7xl md:text-[12vw] lg:text-[10vw] uppercase leading-[0.75] tracking-tighter">
+                                        L&apos;Esprit<br />Nomad.
+                                    </h1>
+                                    <div className="w-12 h-[2px] bg-nomad-pink" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    );
+                }}
+            </StickyWrapper>
+
+            {/* SLIDING CONTENT LAYER */}
+            <div className="relative z-20 bg-black border-t border-white/10 pt-32 pb-48 px-6 sm:px-12 md:px-24 shadow-[0_-30px_60px_rgba(0,0,0,0.9)]">
+                <div className="max-w-7xl mx-auto w-full flex flex-col gap-32 md:gap-48">
+                    
+                    {/* Genesis & Vision */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+                        <section className="flex flex-col gap-10">
+                            <span className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.6em]">01 / Genèse</span>
+                            <h2 className="font-sans font-extralight text-3xl md:text-5xl text-white/90 leading-[1.1] tracking-tight">
+                                Une synergie née de la passion pure pour la House Music.
+                            </h2>
+                            <p className="font-sans font-light text-lg md:text-xl text-white/50 leading-relaxed max-w-xl">
+                                Né à Orléans, NOMAD est un projet organique, une envie simple de partager des vibrations brutes. Nous organisons des parenthèses sonores où seule l&apos;énergie du dancefloor compte.
+                            </p>
+                        </section>
+
+                        <section className="flex flex-col gap-10 md:mt-32">
+                            <span className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.6em]">02 / Philosophie</span>
+                            <h2 className="font-display font-black text-5xl md:text-8xl uppercase tracking-tighter leading-[0.8] text-white">
+                                La fête est <br /><span className="text-nomad-pink">un sentiment.</span>
+                            </h2>
+                            <p className="font-sans font-light text-xl md:text-2xl text-white/40 max-w-xl leading-relaxed italic">
+                                &quot;Ramener de la chaleur et de l&apos;humain dans la nuit. Loin des line-ups froids, nous créons des espaces de déconnexion totale.&quot;
+                            </p>
+                        </section>
+                    </div>
+
+                    {/* Influences Grid */}
+                    <div className="flex flex-col gap-20">
+                        <div className="flex justify-between items-end border-b border-white/10 pb-8">
+                            <h3 className="font-display font-black text-4xl md:text-6xl uppercase tracking-tighter">Inspirations.</h3>
+                            <span className="font-mono text-[10px] opacity-20 hidden sm:block tracking-[0.5em] uppercase">Chicago / New-York / Detroit</span>
                         </div>
-                        <div className="flex flex-col gap-2 font-mono text-[10px] md:text-sm uppercase tracking-[0.3em] opacity-30">
-                            <span>Orléans, FR — Résidence</span>
-                            <span>Collectif House</span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+                            {INFLUENCES.map((inf, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="group flex flex-col gap-4"
+                                >
+                                    <div className="border-b border-white/5 pb-4 flex justify-between items-baseline group-hover:border-nomad-pink transition-colors duration-500">
+                                        <span className="font-display font-medium text-3xl uppercase tracking-tight">{inf}</span>
+                                        <span className="font-mono text-[8px] opacity-20">00{i+1}</span>
+                                    </div>
+                                    <p className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/20 group-hover:text-nomad-pink transition-colors">Digital Archive Influence</p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-                        {/* Column Left: Main Story */}
-                        <div className="md:col-span-7 flex flex-col gap-16">
-                            <section className="flex flex-col gap-8">
-                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">01. Le Collectif</h2>
-                                <p className="font-sans font-light text-2xl md:text-4xl text-white/90 leading-snug">
-                                    NOMAD, c&apos;est avant tout une histoire de potes passionnés par la House Music. Un projet né d&apos;une envie simple : se retrouver et vibrer ensemble.
-                                </p>
-                                <p className="font-sans font-light text-lg md:text-xl text-white/60 leading-relaxed max-w-xl">
-                                    On organise des événements pensés pour le dancefloor, avec une sélection toujours pointue et une vraie volonté de créer de bonnes ondes. Pas de chichis, juste de la bonne musique et une énergie communicative.
-                                </p>
-                            </section>
-
-                            <section className="flex flex-col gap-8">
-                                <h2 className="font-mono text-nomad-pink text-[10px] uppercase tracking-[0.5em]">02. Notre vision</h2>
-                                <blockquote className="font-display italic text-4xl md:text-6xl text-white leading-tight border-l-2 border-nomad-pink pl-8 py-4">
-                                    &quot;La House est un sentiment. On est là pour le partager.&quot;
-                                </blockquote>
-                            </section>
+                    {/* Footer Meta */}
+                    <div className="pt-32 flex flex-col md:flex-row justify-between border-t border-white/5 gap-8 opacity-20">
+                        <div className="flex flex-col gap-2 font-mono text-[8px] uppercase tracking-[0.3em]">
+                            <span>NOMAD COLLECTIVE — ARCHIVE 2026</span>
                         </div>
-
-                        {/* Column Right: Details & Lists */}
-                        <div className="md:col-span-5 flex flex-col gap-12 md:pt-[20vh]">
-                            <section className="flex flex-col gap-8 p-10 bg-white/5 border border-white/5 rounded-sm relative overflow-hidden backdrop-blur-sm">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-nomad-pink opacity-[0.05] blur-[40px]" />
-                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">03. Nos Influences</h2>
-                                <ul className="flex flex-col gap-5 font-sans text-base md:text-lg text-white/70">
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Classic Deep House</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Minimal & Dub</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink" /> Groove Analogique</li>
-                                    <li className="flex items-center gap-4"><span className="w-1.5 h-1.5 rounded-full bg-nomad-pink/50" /> Chicago & Detroit</li>
-                                </ul>
-                            </section>
-
-                            <section className="flex flex-col gap-6 px-4">
-                                <h2 className="font-mono text-nomad-pink text-[9px] uppercase tracking-[0.4em]">04. Booking</h2>
-                                <p className="font-sans text-sm text-white/40 leading-relaxed italic">
-                                    Toujours chauds pour de nouvelles collaborations. Plateaux, soirées, ou événements : on est à votre écoute.
-                                </p>
-                            </section>
+                        <div className="flex flex-col gap-2 font-mono text-[8px] uppercase tracking-[0.3em] text-right">
+                            <span>ORLEANS / FRANCE</span>
                         </div>
-                    </div>
-                </motion.div>
-
-                {/* VISION TEXT SECTION */}
-                <div className="w-full py-40 md:py-64 border-t border-white/5 mt-40">
-                    <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-5xl"
-                    >
-                        <h2 className="font-display font-black text-5xl sm:text-6xl md:text-9xl uppercase tracking-tighter mb-10 md:mb-16 opacity-10">Lâcher prise.</h2>
-                        <p className="font-sans font-light text-xl sm:text-2xl md:text-5xl leading-[1.05] text-white/80 mb-12 md:mb-16">
-                            &quot;Le but c&apos;est de s&apos;oublier le temps d&apos;une soirée. De créer un espace bienveillant où seule la musique compte.&quot;
-                        </p>
-                        <div className="w-24 h-[1px] bg-nomad-pink mb-16" />
-                        <p className="font-sans font-light text-lg md:text-2xl leading-relaxed text-white/50 max-w-3xl">
-                            Notre idée de la fête est simple : ramener de la chaleur et de la proximité dans les soirées. Loin des line-ups froids et standardisés, NOMAD veut remettre le groove et l&apos;humain au centre du dancefloor.
-                        </p>
-                    </motion.div>
-                </div>
-
-                {/* INFLUENCES */}
-                <div className="w-full border-t border-white/10 pt-24">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-30 mb-12 block">Inspirations</span>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {INFLUENCES.map((inf, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group py-6 border-b border-white/5 flex justify-between items-center hover:border-nomad-pink transition-colors"
-                            >
-                                <span className="font-display font-medium text-2xl uppercase tracking-tight">{inf}</span>
-                                <span className="font-mono text-[8px] opacity-0 group-hover:opacity-30 transition-opacity">INFLUENCE</span>
-                            </motion.div>
-                        ))}
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </main>
     );
 }

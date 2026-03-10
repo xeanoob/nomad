@@ -1,54 +1,76 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export function AboutSection() {
-    return (
-        <section id="about" className="relative w-full bg-transparent py-48 px-6 md:px-24 flex items-center justify-center overflow-hidden z-10">
-            <div className="max-w-7xl w-full flex flex-col md:flex-row items-center gap-16 md:gap-32">
-                {/* Visual Placeholder - Matching Step 185 screenshot */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="relative w-full md:w-1/2 aspect-square bg-gradient-to-br from-red-900/20 to-black border border-white/5 flex items-center justify-center group shadow-2xl"
-                >
-                    <div className="absolute inset-0 bg-red-600 opacity-5 blur-3xl transition-opacity duration-1000" />
-                    <span className="font-mono text-[8px] uppercase tracking-[0.5em] opacity-20">NMD_DUO_IMG</span>
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
 
-                    {/* Inner subtle border */}
-                    <div className="absolute inset-4 border border-white/5 pointer-events-none" />
+    const shift = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+
+    return (
+        <section id="about" ref={containerRef} className="relative w-full bg-black py-40 md:py-64 px-6 md:px-24 flex items-center justify-center overflow-hidden z-20">
+            <div className="max-w-7xl w-full flex flex-col md:flex-row-reverse items-center gap-16 md:gap-32 relative z-10">
+                {/* Visual - Premium Glass Placeholder */}
+                <motion.div
+                    style={{ y: shift }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative w-full md:w-1/2 aspect-[4/5] glass-dark flex items-center justify-center overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/10 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
+
+                    {/* Abstract Noise Decoration */}
+                    <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-overlay" />
+
+                    <span className="font-mono text-[9px] uppercase tracking-[0.8em] text-white/20 select-none animate-pulse">NOMAD_ARCHIVE_01</span>
+
+                    {/* Minimal Technical Labels */}
+                    <div className="absolute bottom-6 left-6 flex flex-col gap-1">
+                        <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">REF. NMD_DUO</span>
+                        <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">LOC. ORLEANS / FR</span>
+                    </div>
+
+                    <div className="absolute inset-6 border border-white/5 pointer-events-none group-hover:inset-4 transition-all duration-700" />
                 </motion.div>
 
                 {/* Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                    className="w-full md:w-1/2 flex flex-col gap-10 text-left"
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full md:w-1/2 flex flex-col gap-12"
                 >
-                    <h2 className="font-display font-black text-6xl md:text-8xl uppercase leading-[0.85] tracking-tighter text-white">
-                        Deux Esprits. <br />
-                        <span className="text-nomad-sunset">Une Seule Fréquence.</span>
-                    </h2>
+                    <div className="flex flex-col gap-6">
+                        <div className="flex items-center gap-4">
+                            <div className="w-8 h-[1px] bg-nomad-pink" />
+                            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-nomad-pink/80 tracking-[0.6em]">L&apos;ADN</span>
+                        </div>
+                        <h2 className="font-display font-black text-6xl md:text-8xl uppercase leading-[0.85] tracking-tighter text-white">
+                            Deux Âmes. <br />
+                            <span className="text-edge">Un Seul</span> Rythme.
+                        </h2>
+                    </div>
 
-                    <div className="flex flex-col gap-6 max-w-xl">
-                        <p className="font-sans font-light text-xl leading-relaxed text-white/50">
+                    <div className="flex flex-col gap-8 max-w-xl">
+                        <p className="font-sans font-light text-xl leading-[1.6] text-white/60">
                             NOMAD est l&apos;aboutissement d&apos;une obsession partagée : capturer l&apos;essence brute de la nuit. Nous avons uni nos parcours pour créer une entité qui dépasse la simple somme de ses parties.
                         </p>
-                        <p className="font-sans font-light text-xl leading-relaxed text-white/50">
+                        <p className="font-sans font-light text-xl leading-[1.6] text-white/40">
                             Notre quête nous a menés à explorer les recoins les plus profonds de la House, là où le rythme devient une méditation physique. À Orléans, nous apportons une vision sans compromis, transformant chaque lieu en une enclave de son et d&apos;émotion pure.
-                        </p>
-                        <p className="font-sans font-light text-xl leading-relaxed text-white/50">
-                            Une complicité instinctive derrière les platines nous permet de construire des récits sonores évolutifs, communiquant une énergie authentique face à une &quot;Crue&quot; en perpétuelle expansion.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-4 mt-4">
-                        <div className="w-12 h-[1px] bg-nomad-pink" />
-                        <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/40">ORLÉANS / GLOBAL</span>
+                    <div className="flex flex-col gap-6 pt-6">
+                        <div className="w-12 h-[1px] bg-white/20" />
+                        <span className="font-mono text-[9px] uppercase tracking-[0.6em] text-white/30">Exploration Permanente</span>
                     </div>
                 </motion.div>
             </div>

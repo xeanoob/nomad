@@ -1,8 +1,12 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export function NoiseOverlay() {
     return (
-        <div
-            className="pointer-events-none fixed inset-0 z-50 h-full w-full bg-grain"
-            aria-hidden="true"
-        />
+        <div className="fixed inset-0 z-[100] pointer-events-none overflow-hidden">
+            {/* BASE GRAIN - Softened for comfort */}
+            <div className="absolute inset-0 bg-grain animate-texture opacity-[0.15]" />
+        </div>
     );
 }

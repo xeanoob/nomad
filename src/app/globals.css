@@ -3,14 +3,20 @@
 @theme {
   --color-background: #000000;
   --color-foreground: #ffffff;
-  --color-nomad-pink: #ff4d85;
-  --color-nomad-sunset: #ff8c42;
+  --color-nomad-pink: #7c3aed;
+  /* Violet 600 */
+  --color-nomad-sunset: #a78bfa;
+  /* Violet 400 */
   --color-nomad-dark: #000000;
   --color-nomad-gray: #1a1a1a;
 
   --font-sans: var(--font-inter), sans-serif;
   --font-display: var(--font-outfit), sans-serif;
   --font-mono: var(--font-mono), monospace;
+
+  /* Custom Spacing */
+  --spacing-tight: -0.05em;
+  --spacing-wide: 0.5em;
 }
 
 :root {
@@ -20,6 +26,7 @@
 
 html {
   background-color: #000000;
+  cursor: crosshair;
 }
 
 body {
@@ -34,22 +41,95 @@ body {
 /* HIDE SCROLLBAR */
 * {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 *::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari and Opera */
 }
 
+/* AVANT-GARDE UTILITIES */
 
 @utility bg-grain {
-  background-image: url('/noise.svg');
-  background-repeat: repeat;
-  mix-blend-mode: overlay;
-  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  mix-blend-mode: hard-light;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(50px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility text-mask {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility blend-diff {
+  mix-blend-mode: difference;
+}
+
+@utility blend-excl {
+  mix-blend-mode: exclusion;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-[-0.08em] leading-[0.85];
+  }
+}
+
+/* SUBTLE TEXTURE ANIMATION (MUCH SLOWER) */
+@keyframes textureFade {
+
+  0%,
+  100% {
+    opacity: 0.02;
+  }
+
+  50% {
+    opacity: 0.03;
+  }
+}
+
+.animate-texture {
+  animation: textureFade 4s ease-in-out infinite;
+}
+
+/* AMBIENT GLOW ANIMATION */
+@keyframes ambientPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+.animate-ambient-pulse {
+  animation: ambientPulse 4s linear infinite;
+}
+
+/* PERSPECTIVE WRAPPERS */
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* LENIS SMOOTH SCROLL */
