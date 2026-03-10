@@ -46,7 +46,7 @@ export function Header() {
             {/* Header Mobile First */}
             <nav className="fixed top-0 left-0 w-full p-6 md:p-10 z-[95] flex justify-between items-start md:items-center mix-blend-difference pointer-events-none transition-all duration-300">
                 {/* Background Delimitation for Mobile */}
-                <div className={`absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/10 transition-opacity duration-300 md:hidden ${isScrolled ? "opacity-100" : "opacity-0"}`} />
+                <div className={`absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300 md:hidden ${isScrolled ? "opacity-100" : "opacity-0"}`} />
 
 
                 {/* Logo Top Left - Hidden on Home since it's above the title now */}
