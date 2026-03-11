@@ -28,8 +28,8 @@ export default function RootLayout({
           <main className="min-h-screen">
             {children}
           </main>
-          <Footer />
         </SmoothScrolling>
+        <Footer />
       </body>
     </html>
   );

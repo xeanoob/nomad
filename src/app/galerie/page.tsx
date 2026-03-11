@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence, useTransform, MotionValue } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
-import { StickyWrapper } from "@/components/layout/StickyWrapper";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, Maximize2, Scan } from "lucide-react";
 
@@ -50,31 +49,22 @@ export default function GaleriePage() {
                 <div className="absolute top-[10%] right-[-5%] w-[100vw] h-[100vw] bg-nomad-pink/[0.04] blur-[180px] rounded-full animate-ambient-pulse" />
             </div>
 
-            {/* STICKY HERO */}
-            <StickyWrapper height="120vh" className="z-10 bg-black">
-                {(progress: MotionValue<number>) => {
-                    const opacity = useTransform(progress, [0, 0.8, 1], [1, 1, 0]);
-                    const scale = useTransform(progress, [0, 1], [1, 0.92]);
-
-                    return (
-                        <motion.div style={{ opacity, scale }} className="relative w-full h-full flex flex-col justify-center px-6 sm:px-12 md:px-24">
-                            <div className="max-w-7xl mx-auto w-full">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                    className="flex flex-col gap-6"
-                                >
-                                    <h1 className="font-display font-black text-[15vw] md:text-[min(12vw,200px)] uppercase leading-[0.8] tracking-tighter">
-                                        Exposition.
-                                    </h1>
-                                    <div className="w-12 h-[2px] bg-nomad-pink" />
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    );
-                }}
-            </StickyWrapper>
+            {/* HERO */}
+            <section className="relative w-full min-h-[60vh] flex flex-col justify-center px-6 sm:px-12 md:px-24 z-10 bg-black">
+                <div className="max-w-7xl mx-auto w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col gap-6"
+                    >
+                        <h1 className="font-display font-black text-[15vw] md:text-[min(12vw,200px)] uppercase leading-[0.8] tracking-tighter">
+                            Exposition.
+                        </h1>
+                        <div className="w-12 h-[2px] bg-nomad-pink" />
+                    </motion.div>
+                </div>
+            </section>
 
             {/* SLIDING CONTENT LAYER */}
             <div className="relative z-20 bg-black border-t border-white/10 pt-32 pb-48 px-6 sm:px-12 md:px-24 shadow-[0_-30px_60px_rgba(0,0,0,0.9)]">

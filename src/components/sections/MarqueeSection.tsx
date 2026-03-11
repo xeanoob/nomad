@@ -1,53 +1,82 @@
-"use client";
-
-import { motion, useTransform, MotionValue } from "framer-motion";
-import { StickyWrapper } from "@/components/layout/StickyWrapper";
+import { motion } from "framer-motion";
 
 export function MarqueeSection() {
+    const marqueeVariant = {
+        animate: {
+            x: ["0%", "-50%"],
+            transition: {
+                x: {
+                    repeat: Infinity,
+                    repeatType: "loop" as const,
+                    duration: 30,
+                    ease: "linear" as const,
+                },
+            },
+        },
+    };
+
+    const marqueeVariantReverse = {
+        animate: {
+            x: ["-50%", "0%"],
+            transition: {
+                x: {
+                    repeat: Infinity,
+                    repeatType: "loop" as const,
+                    duration: 30,
+                    ease: "linear" as const,
+                },
+            },
+        },
+    };
+
     return (
-        <StickyWrapper height="200vh" className="bg-black z-20">
-            {(progress: MotionValue<number>) => {
-                // Fast parallax movement bound to scroll
-                const x1 = useTransform(progress, [0, 1], ["0%", "-30%"]);
-                const x2 = useTransform(progress, [0, 1], ["-30%", "0%"]);
-                
-                // Fade in and out to blend with previous/next sections
-                const opacity = useTransform(progress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
-                return (
+        <section className="relative w-full py-20 bg-black z-20 overflow-x-hidden bg-gradient-to-b from-transparent via-nomad-pink/5 to-transparent">
+            <div className="flex flex-col justify-center gap-4 md:gap-8">
+                {/* Marquee Line 1 */}
+                <div className="flex whitespace-nowrap overflow-hidden">
                     <motion.div 
-                        style={{ opacity }}
-                        className="relative w-full h-full flex flex-col justify-center gap-4 md:gap-8 overflow-hidden bg-gradient-to-b from-transparent via-nomad-pink/5 to-transparent"
+                        variants={marqueeVariant}
+                        animate="animate"
+                        className="flex items-center gap-8 shrink-0"
                     >
-                        {/* Marquee Line 1 */}
-                        <motion.div style={{ x: x1 }} className="flex whitespace-nowrap items-center gap-8">
-                            {[...Array(4)].map((_, i) => (
-                                <h2 key={`m1-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
-                                    IMMERSIVE SOUNDSCAPES <span className="text-nomad-pink/40 mx-4">✦</span>
-                                </h2>
-                            ))}
-                        </motion.div>
-
-                        {/* Marquee Line 2 */}
-                        <motion.div style={{ x: x2 }} className="flex whitespace-nowrap items-center gap-8">
-                            {[...Array(4)].map((_, i) => (
-                                <h2 key={`m2-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-white">
-                                    NO SLEEP CLUB <span className="text-nomad-pink mx-4">✦</span> ORLÉANS
-                                </h2>
-                            ))}
-                        </motion.div>
-
-                        {/* Marquee Line 3 */}
-                        <motion.div style={{ x: x1 }} className="flex whitespace-nowrap items-center gap-8">
-                            {[...Array(4)].map((_, i) => (
-                                <h2 key={`m3-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
-                                    BEYOND THE DECKS <span className="text-nomad-pink/40 mx-4">✦</span> 
-                                </h2>
-                            ))}
-                        </motion.div>
+                        {[...Array(8)].map((_, i) => (
+                            <h2 key={`m1-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
+                                IMMERSIVE SOUNDSCAPES <span className="text-nomad-pink/40 mx-4">✦</span>
+                            </h2>
+                        ))}
                     </motion.div>
-                );
-            }}
-        </StickyWrapper>
+                </div>
+
+                {/* Marquee Line 2 */}
+                <div className="flex whitespace-nowrap overflow-hidden">
+                    <motion.div 
+                        variants={marqueeVariantReverse}
+                        animate="animate"
+                        className="flex items-center gap-8 shrink-0"
+                    >
+                        {[...Array(8)].map((_, i) => (
+                            <h2 key={`m2-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-white">
+                                NO SLEEP CLUB <span className="text-nomad-pink mx-4">✦</span> ORLÉANS
+                            </h2>
+                        ))}
+                    </motion.div>
+                </div>
+
+                {/* Marquee Line 3 */}
+                <div className="flex whitespace-nowrap overflow-hidden">
+                    <motion.div 
+                        variants={marqueeVariant}
+                        animate="animate"
+                        className="flex items-center gap-8 shrink-0"
+                    >
+                        {[...Array(8)].map((_, i) => (
+                            <h2 key={`m3-${i}`} className="font-display font-black text-6xl md:text-[8vw] uppercase leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
+                                BEYOND THE DECKS <span className="text-nomad-pink/40 mx-4">✦</span> 
+                            </h2>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
     );
 }

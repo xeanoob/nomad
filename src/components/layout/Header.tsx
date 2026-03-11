@@ -11,11 +11,30 @@ export function Header() {
     const pathname = usePathname();
     const { scrollY } = useScroll();
 
-    // HUD Transition state based on scroll - CLAMPED to prevent scrolling off-screen
-    const headerBg = useTransform(scrollY, [0, 50], ["rgba(0,0,0,0)", "rgba(0,0,0,0.4)"], { clamp: true });
-    const headerBlur = useTransform(scrollY, [0, 50], ["blur(0px)", "blur(12px)"], { clamp: true });
-    const headerBorder = useTransform(scrollY, [0, 50], ["1px solid rgba(255,255,255,0)", "1px solid rgba(255,255,255,0.1)"], { clamp: true });
-    const headerY = useTransform(scrollY, [0, 50], [32, 16], { clamp: true });
+    // Scroll-linked dynamic header styling
+    const headerBg = useTransform(
+        scrollY,
+        [0, 50],
+        ["rgba(0,0,0,0)", "rgba(0,0,0,0.6)"]
+    );
+
+    const headerBlur = useTransform(
+        scrollY,
+        [0, 50],
+        ["blur(0px)", "blur(12px)"]
+    );
+
+    const headerBorder = useTransform(
+        scrollY,
+        [0, 50],
+        ["1px solid rgba(255,255,255,0)", "1px solid rgba(255,255,255,0.1)"]
+    );
+
+    const headerY = useTransform(
+        scrollY,
+        [0, 50],
+        [32, 16] // Starts at y=32 and drops to y=16 (tighter to the top) 
+    );
 
     return (
         <>
@@ -50,12 +69,15 @@ export function Header() {
 
             {/* Header / HUD - Now Fixed and Reactive */}
             <motion.nav
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 1.5 }}
                 style={{
                     backgroundColor: headerBg,
                     backdropFilter: headerBlur,
                     border: headerBorder,
-                    x: "-50%",
-                    y: headerY
+                    y: headerY,
+                    x: "-50%"
                 }}
                 className="fixed top-0 left-1/2 w-[95%] max-w-6xl h-16 md:h-20 z-[95] mix-blend-normal pointer-events-none flex items-center justify-between px-8 rounded-full transition-shadow duration-300"
             >
