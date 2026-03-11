@@ -61,7 +61,7 @@ export function ContactSection() {
                                     setTimeout(() => setStatus("idle"), 5000);
                                 } else {
                                     setStatus("idle");
-                                    alert("Une erreur est survenue.");
+                                    alert(res.error || "Une erreur est survenue.");
                                 }
                             }}
                         >
