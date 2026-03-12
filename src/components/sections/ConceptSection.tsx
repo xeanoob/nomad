@@ -5,10 +5,6 @@ import { motion } from "framer-motion";
 export function ConceptSection() {
     return (
         <section className="relative w-full py-40 bg-black z-20 overflow-hidden px-6">
-            {/* FLOATING TEXTURE NAME */}
-            <div className="absolute top-1/2 left-0 w-full whitespace-nowrap pointer-events-none opacity-[0.03] hidden md:flex items-center -translate-y-1/2">
-                <span className="font-display font-black text-[30vw] uppercase leading-none text-white italic">TEXTURES_NOMADES</span>
-            </div>
 
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10 w-full">
                 {/* Visual - Fragmented Image */}
@@ -21,14 +17,9 @@ export function ConceptSection() {
                     <div className="absolute inset-0 bg-gradient-to-br from-nomad-pink/20 to-transparent mix-blend-overlay z-10" />
                     <div className="absolute inset-0 w-full h-full scale-110 group-hover:scale-100 transition-transform duration-1000">
                         <div className="w-full h-full bg-neutral-900 flex items-center justify-center">
-                            <span className="font-mono text-[10px] uppercase tracking-[1em] text-white/10">IMG_FRAGMENT_01</span>
                         </div>
                     </div>
 
-                    <div className="absolute top-8 left-8 flex flex-col gap-1 z-20">
-                        <span className="font-mono text-[8px] uppercase tracking-widest text-white/40">FRAG. TYPE // 01</span>
-                        <div className="w-12 h-[1px] bg-nomad-pink" />
-                    </div>
                 </motion.div>
 
                 {/* Content - Editorial Layout */}

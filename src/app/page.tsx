@@ -29,8 +29,8 @@ export default function Home() {
       {/* Structured Sections - NO TOP PADDING/MARGIN */}
       <HeroSection />
       <ConceptSection />
-      <MarqueeSection />
       <ManifestoSection />
+      <MarqueeSection />
       <ContactSection />
 
       {/* Mobile Footer Links */}

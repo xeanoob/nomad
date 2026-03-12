@@ -40,28 +40,15 @@ export function HeroSection() {
                 </motion.p>
             </div>
 
-            {/* HUD META */}
-            <div className="absolute inset-0 z-20 pointer-events-none flex flex-col items-center justify-between py-16">
-                <div className="w-full px-8 pt-24 mt-8 flex justify-between items-start font-mono text-[8px] uppercase tracking-[0.4em] text-white/40">
-                    <div className="flex flex-col gap-1">
-                        <span className="text-nomad-pink opacity-60">NOMAD_ARCHIVE</span>
-                        <span>VER_2.3.0</span>
-                    </div>
-                    <div className="flex flex-col items-end gap-1 text-right">
-                        <span>47.9030° N, 1.9093° E</span>
-                        <span>ORLEANS / FR</span>
-                    </div>
-                </div>
-            </div>
 
             {/* ACTION HUD */}
             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-30 flex gap-10 items-center pointer-events-auto">
                 <Link href="/music" className="group flex items-center gap-4 py-6 px-10 glass overflow-hidden transition-transform active:scale-95 border border-white/10">
                     <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white">Fragments</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white">Musique</span>
                 </Link>
                 <Link href="/booking" className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/40 hover:text-white transition-colors">
-                    Connection
+                    Booking
                 </Link>
             </div>
         </section>

@@ -11,9 +11,6 @@ export function ManifestoSection() {
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                 className="relative perspective-container flex flex-col items-center text-center px-6"
             >
-                <span className="font-mono text-[10px] uppercase tracking-[1em] text-white/20 mb-12">
-                    Processus_Manifeste
-                </span>
 
                 <h2 className="font-display font-black text-6xl md:text-[12vw] uppercase leading-[0.75] tracking-[-0.08em] text-white blend-excl">
                     Lâcher <br />

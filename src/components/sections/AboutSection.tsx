@@ -18,13 +18,7 @@ export function AboutSection() {
                     {/* Abstract Noise Decoration */}
                     <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-overlay" />
 
-                    <span className="font-mono text-[9px] uppercase tracking-[0.8em] text-white/20 select-none animate-pulse">NOMAD_ARCHIVE_01</span>
 
-                    {/* Minimal Technical Labels */}
-                    <div className="absolute bottom-6 left-6 flex flex-col gap-1">
-                        <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">REF. NMD_DUO</span>
-                        <span className="font-mono text-[8px] uppercase tracking-widest text-white/30">LOC. ORLEANS / FR</span>
-                    </div>
 
                     <div className="absolute inset-6 border border-white/5 pointer-events-none group-hover:inset-4 transition-all duration-700" />
                 </motion.div>
@@ -56,10 +50,6 @@ export function AboutSection() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col gap-6 pt-6">
-                        <div className="w-12 h-[1px] bg-white/20" />
-                        <span className="font-mono text-[9px] uppercase tracking-[0.6em] text-white/30">Exploration Permanente</span>
-                    </div>
                 </motion.div>
             </div>
         </section>
