@@ -14,8 +14,17 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Check if splash has already been shown in this session
+    const hasShownSplash = sessionStorage.getItem("nomad_splash_shown");
+    
+    if (hasShownSplash) {
+      setIsLoading(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
+      sessionStorage.setItem("nomad_splash_shown", "true");
     }, 1500);
 
     return () => clearTimeout(timer);

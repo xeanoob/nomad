@@ -9,11 +9,20 @@ export function AboutSection() {
                 {/* Visual - Premium Glass Placeholder */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative w-full md:w-1/2 aspect-[4/5] glass-dark flex items-center justify-center overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5"
+                    className="relative w-full md:w-1/2 aspect-[4/5] glass-dark flex items-center justify-center overflow-hidden group shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/5 cursor-pointer"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/10 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/10 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+                    
+                    <motion.div 
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute inset-0 w-full h-full"
+                    >
+                        <div className="w-full h-full bg-neutral-900 group-hover:brightness-125 transition-all duration-700" />
+                    </motion.div>
 
                     {/* Abstract Noise Decoration */}
                     <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] mix-blend-overlay" />

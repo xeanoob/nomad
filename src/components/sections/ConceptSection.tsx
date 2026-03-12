@@ -10,15 +10,22 @@ export function ConceptSection() {
                 {/* Visual - Fragmented Image */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="md:col-span-7 relative aspect-[4/5] glass-dark overflow-hidden group border border-white/10"
+                    className="md:col-span-7 relative aspect-[4/5] glass-dark overflow-hidden group border border-white/10 cursor-pointer"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-nomad-pink/20 to-transparent mix-blend-overlay z-10" />
-                    <div className="absolute inset-0 w-full h-full scale-110 group-hover:scale-100 transition-transform duration-1000">
-                        <div className="w-full h-full bg-neutral-900 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-nomad-pink/20 to-transparent mix-blend-overlay z-10 pointer-events-none" />
+                    <motion.div 
+                        whileHover={{ scale: 1.02, skewY: 1 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="absolute inset-0 w-full h-full overflow-hidden"
+                    >
+                        <div className="absolute inset-0 w-full h-full scale-110 group-hover:scale-105 transition-transform duration-1000">
+                            <div className="w-full h-full bg-neutral-910 flex items-center justify-center">
+                            </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </motion.div>
 

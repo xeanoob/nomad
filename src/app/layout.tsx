@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
+import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
 import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${inter.variable} ${outfit.variable} ${mono.variable}`} suppressHydrationWarning>
       <body className="bg-black text-white antialiased selection:bg-nomad-pink/30 select-none">
+        <NoiseOverlay />
         <Header />
         <SmoothScrolling>
           <main className="min-h-screen">
