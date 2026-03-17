@@ -1,6 +1,5 @@
 "use client";
 
-import { NoiseOverlay } from "@/components/layout/NoiseOverlay";
 import { useRef, useEffect, useState } from "react";
 import { SplashScreen } from "@/components/ui/SplashScreen";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -33,21 +32,24 @@ export default function Home() {
   return (
     <main ref={containerRef} className="relative w-full bg-black text-white">
       <SplashScreen isVisible={isLoading} />
-      <NoiseOverlay />
 
       {/* Structured Sections - NO TOP PADDING/MARGIN */}
       <HeroSection />
       <ConceptSection />
+      <AboutSection />
       <ManifestoSection />
       <MarqueeSection />
       <ContactSection />
 
       {/* Mobile Footer Links */}
-      <div className="md:hidden w-full flex justify-between px-6 py-12 text-[10px] font-mono tracking-widest uppercase opacity-30">
-        <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <div className="md:hidden w-full flex justify-between px-6 py-12 text-[10px] font-logo tracking-[0.4em] uppercase opacity-30">
+        <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
         <span className="opacity-20">—</span>
         <span>Orléans</span>
       </div>
     </main>
   );
 }
+
+// Missing import from previous logic? Added AboutSection back to flow.
+import { AboutSection } from "@/components/sections/AboutSection";

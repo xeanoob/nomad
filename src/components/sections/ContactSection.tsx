@@ -9,112 +9,85 @@ export function ContactSection() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     return (
-        <section id="contact" className="relative w-full py-40 bg-black z-40 overflow-hidden px-4 sm:px-8 text-foreground">
-            <div className="mx-auto max-w-4xl text-center w-full">
-                <motion.div
+        <section id="contact" className="relative w-full py-80 bg-transparent z-40 overflow-hidden px-6 text-white">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-32 items-start justify-between">
+                
+                {/* Form Side */}
+                <motion.div 
                     initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-12"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="w-full md:w-1/2 flex flex-col gap-24"
                 >
-                    <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl uppercase">
-                        Rejoindre la Crue
-                    </h2>
-                    <p className="mt-4 text-base text-white/60 font-light max-w-xl mx-auto">
-                        Inscrivez-vous pour être les premiers informés de nos événements secrets et de nos nouvelles sessions. Pas de spam, juste l&apos;essentiel.
-                    </p>
-                </motion.div>
+                    <div className="flex flex-col gap-12">
+                        <h2 className="font-display font-medium text-6xl md:text-8xl uppercase leading-none tracking-[-0.05em]">
+                            Let&apos;s <br />
+                            <span className="italic opacity-20">Connect.</span>
+                        </h2>
+                    </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur-md"
-                >
-                    {status === "success" ? (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="py-12 flex flex-col items-center gap-4"
+                    <div className="flex flex-col gap-16">
+                        <div className="flex flex-col gap-10">
+                            <label className="font-logo font-light text-[11px] md:text-[13px] uppercase tracking-[0.6em] text-white/40">L&apos;Identité</label>
+                            <input 
+                                type="text" 
+                                placeholder="Nom & Prénom" 
+                                className="bg-transparent border-b border-white/20 py-5 font-logo font-light text-[13px] md:text-[14px] tracking-[0.15em] text-white focus:outline-none focus:border-white transition-all duration-700 placeholder:text-white/10"
+                            />
+                            <input 
+                                type="email" 
+                                placeholder="Adresse Électronique" 
+                                className="bg-transparent border-b border-white/20 py-5 font-logo font-light text-[13px] md:text-[14px] tracking-[0.15em] text-white focus:outline-none focus:border-white transition-all duration-700 placeholder:text-white/10"
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-10">
+                            <label className="font-logo font-light text-[11px] md:text-[13px] uppercase tracking-[0.6em] text-white/40">La Vision</label>
+                            <textarea 
+                                placeholder="Décrivez votre projet..." 
+                                rows={4}
+                                className="bg-transparent border-b border-white/20 py-5 font-logo font-light text-[13px] md:text-[14px] tracking-[0.15em] text-white focus:outline-none focus:border-white transition-all duration-700 resize-none placeholder:text-white/10"
+                            />
+                        </div>
+
+                        <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="mt-12 py-5 px-16 border border-white/20 rounded-full font-logo font-light text-[11px] md:text-[12px] uppercase tracking-[0.4em] text-white/60 hover:bg-white hover:text-black hover:border-white transition-all duration-700"
                         >
-                            <div className="w-16 h-16 rounded-full bg-nomad-pink/20 flex items-center justify-center text-nomad-pink">
-                                <Mail size={32} />
-                            </div>
-                            <h3 className="text-2xl font-bold text-white uppercase">Bienvenue dans la Crue</h3>
-                            <p className="text-white/60 text-center">Votre email a été ajouté à notre liste de diffusion prioritaire.</p>
-                            <button
-                                onClick={() => setStatus("idle")}
-                                className="mt-4 text-xs font-mono uppercase tracking-widest text-white/40 hover:text-white transition-colors cursor-pointer"
-                            >
-                                Retour
-                            </button>
-                        </motion.div>
-                    ) : (
-                        <form
-                            className="flex flex-col gap-8 text-left"
-                            action={async (formData) => {
-                                setStatus("loading");
-                                const email = formData.get("email") as string;
-                                const res = await subscribeNewsletter(email);
-                                if (res.success) {
-                                    setStatus("success");
-                                    setTimeout(() => setStatus("idle"), 5000);
-                                } else {
-                                    setStatus("idle");
-                                    alert(res.error || "Une erreur est survenue.");
-                                }
-                            }}
-                        >
-                            <div className="flex flex-col gap-2">
-                                <label htmlFor="email" className="text-sm font-medium tracking-wide text-white/50 uppercase">
-                                    Email
-                                </label>
-                                <div className="flex flex-col sm:flex-row gap-4">
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        required
-                                        className="flex-1 border-b border-white/20 bg-transparent px-0 py-3 text-white placeholder-white/20 transition-colors focus:border-nomad-pink focus:outline-none text-lg selection:bg-nomad-pink/30"
-                                        placeholder="votre-email@domaine.com"
-                                    />
-                                    <button
-                                        type="submit"
-                                        disabled={status === "loading"}
-                                        className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-white border border-transparent hover:border-white disabled:opacity-50 whitespace-nowrap cursor-pointer"
-                                    >
-                                        <span className="relative z-10 transition-colors group-hover:text-white">
-                                            {status === "loading" ? "Envoi..." : "Rejoindre"}
-                                        </span>
-                                        <div className="absolute inset-0 z-0 h-full w-full translate-y-full bg-nomad-pink transition-transform duration-300 ease-out group-hover:translate-y-0" />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="pt-8 border-t border-white/5 flex flex-col gap-4 text-center">
-                                <p className="text-xs text-white/30 uppercase tracking-[0.2em]">Pour toute demande de booking</p>
-                                <a href="/booking" className="text-sm md:text-base font-mono text-white/60 hover:text-nomad-pink transition-colors cursor-pointer tracking-tight underline">ACCÉDER AU BOOKING</a>
-                            </div>
-                        </form>
-                    )}
+                            Transmettre
+                        </motion.button>
+                    </div>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.4 }}
-                    className="mt-20 flex justify-center gap-8"
-                >
-                    <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
-                        <Instagram size={28} />
-                    </a>
-                    <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
-                        <Music2 size={28} />
-                    </a>
-                    <a href="mailto:contactpro.nomad@gmail.com" className="text-white/50 transition-colors hover:text-nomad-pink cursor-pointer">
-                        <Mail size={28} />
-                    </a>
-                </motion.div>
+                {/* Info Columns */}
+                <div className="w-full md:w-1/3 flex flex-col gap-24 md:pl-24 border-l border-white/5">
+                    <div className="flex flex-col gap-10">
+                        <span className="font-logo font-light text-[10px] md:text-[11px] uppercase tracking-[0.6em] text-white/30">Bureau</span>
+                        <div className="flex flex-col gap-4">
+                            <p className="font-logo font-light text-[13px] md:text-[14px] tracking-widest text-white/80 uppercase">Orléans — FR</p>
+                            <p className="font-logo font-light text-[11px] tracking-widest text-white/40">Expansion Européenne</p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-10">
+                        <span className="font-logo font-light text-[10px] md:text-[11px] uppercase tracking-[0.6em] text-white/30">Direct</span>
+                        <a href="mailto:hello@nomad-music.com" className="font-logo font-light text-[13px] md:text-[14px] tracking-widest text-white/60 hover:text-white transition-colors">
+                            Hello@nomad-music.com
+                        </a>
+                    </div>
+
+                    <div className="flex flex-col gap-10 mt-auto">
+                        <span className="font-logo font-light text-[10px] md:text-[11px] uppercase tracking-[0.6em] text-white/30">Digital</span>
+                        <div className="flex flex-col gap-5">
+                            {['Instagram', 'SoundCloud', 'Vimeo'].map((social) => (
+                                <a key={social} href="#" className="font-logo font-light text-[11px] md:text-[12px] uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors">
+                                    {social}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );

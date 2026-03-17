@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface SplashScreenProps {
@@ -15,30 +15,28 @@ export function SplashScreen({ isVisible }: SplashScreenProps) {
         >
             {isVisible && (
                 <>
-                    {/* Background Pulsing Ambient */}
-                    <div className="absolute w-[150vw] h-[150vw] bg-nomad-pink/20 blur-[150px] rounded-full animate-ambient-pulse" />
-
-                    {/* Logo Container */}
+                    {/* Minimalist Logo Container */}
                     <div className="relative flex flex-col items-center justify-center z-10">
-                        {/* Core glow behind logo */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-nomad-pink/30 blur-2xl rounded-full animate-pulse" />
-                        
-                        <div className="relative w-32 h-32 md:w-44 md:h-44">
+                        <div className="relative w-24 h-24 md:w-32 md:h-32 mb-16 grayscale invert brightness-200 opacity-40">
                             <Image
-                                src="/nomad-removebg-preview.png"
+                                src="/nomad.png"
                                 alt="Nomad Logo"
                                 fill
                                 className="object-contain"
-                                style={{ filter: "brightness(0) invert(1)" }}
                                 priority
                             />
                         </div>
                     </div>
 
-                    {/* Subtle Loading Text */}
-                    <div className="mt-8 font-mono text-[9px] uppercase tracking-[1em] text-white/40 animate-pulse z-10">
-                        Synchronizing
-                    </div>
+                    {/* Luxurious Phrasing - Improved Readability */}
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                        className="mt-8 font-logo font-light text-[11px] md:text-[13px] uppercase tracking-[1em] text-white/50 z-10"
+                    >
+                        Collection Nomad — Édition Orléans
+                    </motion.div>
                 </>
             )}
         </div>

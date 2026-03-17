@@ -52,7 +52,7 @@ export function CustomCursor() {
             }}
             animate={{
                 scale: isPointer ? 3 : isHovered ? 2.5 : 1,
-                backgroundColor: isPointer ? "rgba(124, 58, 237, 0.3)" : "rgba(255, 255, 255, 1)",
+                backgroundColor: isPointer ? "rgba(8, 12, 56, 0.4)" : "rgba(255, 255, 255, 1)",
                 mixBlendMode: isHovered ? "difference" : "normal",
             }}
             className="fixed w-6 h-6 rounded-full pointer-events-none z-[9999] border border-white/20"

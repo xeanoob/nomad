@@ -5,46 +5,52 @@ import Image from "next/image";
 
 export function Footer() {
     return (
-        <footer className="w-full bg-black border-t border-white/5 pt-12 md:pt-24 pb-12 px-6 md:px-24 flex flex-col items-center">
+        <footer className="w-full bg-transparent border-t border-white/5 pt-32 md:pt-64 pb-20 px-6 md:px-24 flex flex-col items-center">
             <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
 
                 {/* Branding */}
-                <div className="flex flex-col gap-4 md:gap-6">
-                    <div className="relative w-20 h-20 md:w-24 md:h-24 -ml-2">
+                <div className="flex flex-col gap-16 md:gap-24">
+                    <div className="relative w-12 h-12 md:w-16 md:h-16 grayscale invert brightness-200 opacity-20">
                         <Image
-                            src="/nomad-removebg-preview.png"
+                            src="/nomad.png"
                             alt="Nomad Logo"
                             fill
-                            className="object-contain [filter:brightness(0)_invert(1)]"
+                            className="object-contain"
                         />
                     </div>
-                    <p className="font-sans font-light text-sm text-white/40 max-w-[200px] leading-relaxed">
-                        Exploration des textures profondes de la House Music. Basé à Orléans.
-                    </p>
                 </div>
 
                 {/* Links */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-24 w-full md:w-auto">
-                    <div className="flex flex-col gap-4">
-                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Exploration</span>
-                        <Link href="/" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Accueil</Link>
-                        <Link href="/about" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">À Propos</Link>
-                        <Link href="/music" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Musique</Link>
-                        <Link href="/galerie" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Galerie</Link>
-                        <Link href="/booking" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Booking</Link>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-24 md:gap-32 w-full md:w-auto text-white">
+                    <div className="flex flex-col gap-12">
+                        <span className="font-logo text-[11px] md:text-[12px] uppercase tracking-[0.8em] text-white/40">Explorer</span>
+                        <div className="flex flex-col gap-6">
+                            {['Accueil', 'À Propos', 'Musique', 'Galerie', 'Booking'].map((item) => (
+                                <Link 
+                                    key={item}
+                                    href={item === 'Accueil' ? '/' : `/${item.toLowerCase()}`} 
+                                    className="font-logo font-light text-[12px] md:text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer uppercase tracking-[0.3em]"
+                                >
+                                    {item}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                    <div className="flex flex-col gap-4">
-                        <span className="font-mono text-[10px] uppercase tracking-widest opacity-30">Social & Management</span>
-                        <a href="mailto:contactpro.nomad@gmail.com" className="font-sans text-sm hover:text-nomad-pink transition-colors break-all cursor-pointer">contactpro.nomad@gmail.com</a>
-                        <div className="flex flex-col gap-2 mt-2">
-                            <a href="https://instagram.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Instagram</a>
-                            <a href="https://soundcloud.com/nomadcrue" target="_blank" rel="noopener noreferrer" className="font-sans text-sm hover:text-nomad-pink transition-colors cursor-pointer">Soundcloud</a>
+                    
+                    <div className="flex flex-col gap-12">
+                        <span className="font-logo text-[11px] md:text-[12px] uppercase tracking-[0.8em] text-white/40">Édition</span>
+                        <div className="flex flex-col gap-6">
+                            <a href="mailto:hello@nomad-music.com" className="font-logo font-light text-[11px] md:text-[12px] text-white/50 hover:text-white transition-colors tracking-[0.2em] uppercase">Hello@nomad-music.com</a>
+                            <div className="flex flex-col gap-6">
+                                <a href="#" className="font-logo font-light text-[12px] md:text-[13px] text-white/50 hover:text-white transition-colors uppercase tracking-[0.3em]">Instagram</a>
+                                <a href="#" className="font-logo font-light text-[12px] md:text-[13px] text-white/50 hover:text-white transition-colors uppercase tracking-[0.3em]">Soundcloud</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto mt-12 md:mt-24 pt-8 border-t border-white/5 flex justify-center text-[10px] font-mono uppercase tracking-[0.2em] opacity-30">
+            <div className="w-full max-w-7xl mx-auto mt-12 md:mt-24 pt-8 border-t border-white/5 flex justify-center text-[11px] font-logo uppercase tracking-[0.4em] opacity-30 text-white">
                 <span>© 2026 NOMAD MUSIC</span>
             </div>
         </footer>

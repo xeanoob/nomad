@@ -48,16 +48,16 @@ export function Header() {
                         transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
                         className="fixed inset-0 z-[90] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center md:hidden"
                     >
-                        <div className="flex flex-col gap-10 md:gap-12 text-center font-display font-black text-4xl sm:text-5xl uppercase tracking-tighter">
-                            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">À Propos</Link>
-                            <Link href="/music" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Musique</Link>
-                            <Link href="/galerie" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-pink transition-all cursor-pointer">Galerie</Link>
+                        <div className="flex flex-col gap-10 md:gap-12 text-center font-display font-medium text-4xl sm:text-5xl uppercase tracking-tighter">
+                            <Link href="/about" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-champagne transition-all cursor-pointer">À Propos</Link>
+                            <Link href="/music" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-champagne transition-all cursor-pointer">Musique</Link>
+                            <Link href="/galerie" onClick={() => setIsMenuOpen(false)} className="hover:text-nomad-champagne transition-all cursor-pointer">Galerie</Link>
                             <Link
                                 href="/booking"
                                 onClick={() => setIsMenuOpen(false)}
-                                className={`px-8 py-3 border-2 border-nomad-pink rounded-full transition-all cursor-pointer ${pathname === '/booking'
-                                    ? 'bg-nomad-pink text-black'
-                                    : 'text-nomad-pink hover:bg-nomad-pink hover:text-black'
+                                className={`px-8 py-3 border border-nomad-champagne/40 rounded-full transition-all cursor-pointer ${pathname === '/booking'
+                                    ? 'bg-nomad-champagne text-black'
+                                    : 'text-nomad-champagne hover:bg-nomad-champagne hover:text-black'
                                     }`}
                             >
                                 Booking
@@ -85,29 +85,32 @@ export function Header() {
                 <div className="pointer-events-auto flex items-center gap-6">
                     <Link href="/" className="relative w-8 h-8 md:w-12 md:h-12 transition-transform active:scale-95">
                         <Image
-                            src="/nomad-removebg-preview.png"
+                            src="/nomad.png"
                             alt="Logo Nomad"
                             fill
-                            className="object-contain [filter:brightness(0)_invert(1)]"
+                            className="object-contain"
                             priority
                         />
                     </Link>
                     <div className="hidden sm:block w-[1px] h-6 bg-white/10" />
-                    <span className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.5em] text-white/40">Collective</span>
+                    <div className="flex flex-col">
+                        <span className="font-logo text-lg leading-none tracking-tighter font-bold">NOMAD</span>
+                        <span className="font-logo text-[8px] uppercase tracking-[0.3em] text-white/40">Collective</span>
+                    </div>
                 </div>
 
                 {/* Desktop Nav Center */}
-                <div className="hidden md:flex pointer-events-auto gap-12 items-center text-[10px] font-mono tracking-[0.5em] uppercase">
-                    <Link href="/about" className="hover:text-nomad-pink transition-colors cursor-pointer">À Propos</Link>
-                    <Link href="/music" className="hover:text-nomad-pink transition-colors cursor-pointer">Musique</Link>
-                    <Link href="/galerie" className="hover:text-nomad-pink transition-colors cursor-pointer">Galerie</Link>
+                <div className="hidden md:flex pointer-events-auto gap-16 items-center text-[8px] md:text-[9px] font-logo font-light tracking-[0.6em] uppercase">
+                    <Link href="/about" className="text-white/20 hover:text-nomad-ice transition-colors cursor-pointer">À Propos</Link>
+                    <Link href="/music" className="text-white/20 hover:text-nomad-ice transition-colors cursor-pointer">Musique</Link>
+                    <Link href="/galerie" className="text-white/20 hover:text-nomad-ice transition-colors cursor-pointer">Galerie</Link>
                 </div>
 
                 {/* Action Right */}
-                <div className="pointer-events-auto flex items-center gap-8">
+                <div className="pointer-events-auto flex items-center gap-10">
                     <Link
                         href="/booking"
-                        className={`hidden sm:flex px-6 py-2 md:px-8 md:py-3 rounded-full text-[10px] font-mono tracking-[0.3em] transition-all border border-white/15 hover:border-nomad-pink hover:bg-nomad-pink/10 ${pathname === '/booking' ? 'border-nomad-pink bg-nomad-pink/20' : ''}`}
+                        className={`hidden sm:flex px-8 py-2 md:px-10 md:py-2.5 rounded-full text-[8px] font-logo font-light tracking-[0.4em] transition-all border border-nomad-blue/20 hover:bg-nomad-blue hover:text-white ${pathname === '/booking' ? 'bg-nomad-blue text-white' : 'text-nomad-blue/40'}`}
                     >
                         BOOKING
                     </Link>
